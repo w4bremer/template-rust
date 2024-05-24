@@ -8,6 +8,12 @@ use crate::api::{{snake .Interface.Name}}::{{Camel .Interface.Name}}Trait;
 #[allow(unused_imports)]
 use crate::api::data_structs::*;{{ nl }}
 {{- end }}
+{{- range .Module.Imports }}
+use {{snake .Name}}::api::data_structs::*;
+{{- end }}
+{{- if len .Module.Imports}}
+{{- nl }}
+{{- end }}
 
 {{- if len .Interface.Operations -}}
 {{- $ops = true }}

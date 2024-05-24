@@ -10,6 +10,9 @@ use signals2::*;{{nl}}
 #[allow(unused_imports)]
 use {{snake .Module.Name}}::api::data_structs::*;{{ nl }}
 {{- end -}}
+{{- range .Module.Imports -}}
+use {{snake .Name}}::api::data_structs::*;{{ nl }}
+{{- end }}
 {{- if or (len .Interface.Operations) (len .Interface.Properties) -}}
 use {{snake .Module.Name}}::api::{{snake .Interface.Name}}::{{Camel .Interface.Name}}Trait;
 {{- end }}
