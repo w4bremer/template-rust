@@ -13,3 +13,8 @@ signals2 = "0.3.3"
 {{- range .Module.Imports }}
 {{ snake .Name }} = { path = "../{{ snake .Name }}" }
 {{- end }}
+{{- range .Module.Externs }}
+{{- if (not (eq (rsExtern .).Crate "")) }}
+{{ (rsExtern .).Crate }} = "{{ (rsExtern .).Version }}"
+{{- end }}
+{{- end }}

@@ -1,3 +1,6 @@
+{{- range .Module.Externs }}
+pub use {{(rsExtern .).Crate}}::{{(rsExtern .).Name}};
+{{- end }}
 {{- if or (len .Module.Enums) (len .Module.Structs) -}}
 use serde::{Deserialize, Serialize};
 {{- end }}
